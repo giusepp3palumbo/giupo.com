@@ -1,5 +1,5 @@
 <template>
-    <ArticleList :items="items" />
+    <ArticleList :items="items" viewType="preview" />
 </template>
 
 

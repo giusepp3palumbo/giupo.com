@@ -17,13 +17,12 @@
 
 
 <script setup>
-const props = defineProps(['postId'])
-
-console.log("props.postId: " + props.postId)
-
-
 import { onMounted, ref } from 'vue';
 import { useUserStore } from '@/stores/userStore'; // Importa lo store
+
+const props = defineProps(['postId'])
+
+console.log("props.postId: " + props.postId.value)
 
 const item = ref([]);
 const headings = ref([]) // Array degli <h2> trovati
@@ -87,11 +86,8 @@ onMounted(() => {
     gap: 50px;
 }
 
-
-
-.article-container {
-    display: flex;
-    flex-direction: column-reverse;
+article {
+    flex: 80%;
 }
 
 aside {
@@ -101,9 +97,6 @@ aside {
     align-self: start;
 }
 
-article {
-    flex: 80%;
-}
 
 
 @media (max-width: 800px) {

@@ -1,6 +1,6 @@
 <template>
-    <div id="login-form">
-        <form method="post" @submit.prevent="login">
+    <div class="login-container">
+        <form class="login-form" method="post" @submit.prevent="login">
 
             <h1>Login</h1>
 
@@ -10,7 +10,7 @@
             <label for="psw"><b>Password</b></label>
             <input type="password" v-model="password" name="password" placeholder="Password" required>
 
-            <button type="submit" @click="login">Login</button>
+            <button type="submit">Login</button>
 
         </form>
         <p class="error-text" v-if="error !== ''">Error: {{ error }}</p>
@@ -54,22 +54,24 @@ async function login(event) {
 </script>
 
 <style scoped>
-#login-form {
-    margin: 10px auto;
-    padding: 20px;
-    border: 1px solid black;
-    border-radius: 5%;
-    height: fit-content;
-    width: 200px;
-}
-
-#login-form form {
+.login-container {
     display: flex;
-    flex-direction: column;
-    margin: 0 0;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 10vh;
 }
 
-#login-form h1 {
+.login-form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+h1 {
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 0.2em;
@@ -79,11 +81,23 @@ async function login(event) {
     border-bottom: 1px solid;
 }
 
-#login-form label {
-    padding-top: 15px;
+label {
+    display: block;
+    text-align: left;
+    margin-top: 10px;
+    font-weight: bold;
 }
 
-#login-form button {
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+button {
     margin-top: 15px;
     background-color: var(--primary-color);
     color: white;

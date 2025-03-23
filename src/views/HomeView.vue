@@ -1,39 +1,70 @@
-<script setup>
-
-</script>
-
 <template>
-  <div id="prova">
-    <p>
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-      standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
-      type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
-      remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
-      Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
-      of
-      Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-      industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
-      it
-      to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
-      typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-      containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
-      versions of Lorem Ipsum.
-    </p>
-
-  </div>
-
+  <section>
+    <h1>Featured Posts</h1>
+    <div id="featured-posts">
+      <ArticleList :items="items" viewType="card" />
+    </div>
+  </section>
 </template>
 
-<style scoped>
-#prova {
-  display: flex;
-  padding-right: 20px;
+
+<script setup>
+import ArticleList from '@/components/ArticleList.vue';
+import { onMounted, ref } from 'vue';
+import { useUserStore } from '@/stores/userStore'; // Importa lo store
+
+const items = ref([]);
+const userStore = useUserStore();
+
+const fetchItems = async () => {
+
+  const response = await fetch('http://localhost:8055/items/posts?filter={ "featured": { "_eq": "true" }}',
+    {
+      headers: new Headers({
+        'Authorization': 'Basic ' + userStore.accessToken
+      })
+    }
+  ).then((response) => {
+    return response.json();
+  }).then((data) => {
+    console.log("data")
+    console.log(data)
+    items.value = data.data;
+  }).catch(function (error) {
+    console.error('Errore nel recupero dei posts.', error);
+  })
+
+  console.log(items.value)
 }
 
-p {
-  flex: 1;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+// Carica i prodotti quando il componente è montato
+onMounted(() => {
+  fetchItems();
+});
+</script>
+
+<style scoped>
+#featured-posts {
+  display: flex;
+  height: 250px;
+  gap: 20px;
+  justify-content: center;
+}
+
+section h1 {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  word-spacing: 0.2em;
+  color: var(--secondary-color);
+  margin: 20px 0;
+  border-bottom: 1px solid;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  #featured-posts {
+    flex-direction: column;
+  }
 }
 </style>

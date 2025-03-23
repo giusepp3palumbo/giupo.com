@@ -33,3 +33,7 @@ npm run build
 ```sh
 npm run lint
 ```
+
+TODO:
+1 - filter list
+2 - home page

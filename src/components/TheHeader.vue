@@ -4,7 +4,7 @@
             <h1>Giuseppe Palumbo</h1>
         </div>
         <div class="navbar">
-            <nav id="navbar-list">
+            <nav id="navbar-list" :class="{ 'open': show_menu }">
                 <ul>
                     <li>
                         <RouterLink to="/">Home</RouterLink>
@@ -18,9 +18,10 @@
                     <li>
                         <RouterLink to="/about">About</RouterLink>
                     </li>
+                    <!--
                     <li><a href="#sts">Skills & Tech Stack</a></li>
                     <li><a href="#exp">Experience&Collabs</a></li>
-                    <li><a href="#contacts">Hire Me/Contacts</a></li>
+                    <li><a href="#contacts">Hire Me/Contacts</a></li>-->
                 </ul>
                 <ul>
                     <li>
@@ -30,12 +31,26 @@
                         <RouterLink to="/register">Sign In</RouterLink>
                     </li>
                 </ul>
-
             </nav>
-            <button v-on:click="showmenu"><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <RouterLink id="home-btn" v-if="!show_menu" to="/">
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    width="24" height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="m19 9-7 7-7-7" />
+                        d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
+                </svg>
+            </RouterLink>
+            <button v-if="!show_menu" v-on:click="showmenu">
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                        d="M9 8h10M9 12h10M9 16h10M4.99 8H5m-.02 4h.01m0 4H5" />
+                </svg>
+            </button>
+            <button v-else v-on:click="showmenu">
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m5 15 7-7 7 7" />
                 </svg>
             </button>
         </div>
@@ -43,18 +58,24 @@
 </template>
 
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { ref, watch } from 'vue';
+import { RouterLink, useRoute } from 'vue-router'
+
+let show_menu = ref(false);
+console.log("showMenu start:" + show_menu.value)
 
 function showmenu() {
-    var x = document.getElementById('navbar-list');
-    if (x.style.display == 'none') {
-        x.style.display = 'block';
+    console.log("showMenu, old:" + show_menu.value + " / new:" + !show_menu.value)
 
-    } else {
-        x.style.display = 'none';
-    }
+    show_menu.value = !show_menu.value;
 }
 
+const route = useRoute(); // Ottieni l'oggetto route attuale
+
+// Osserva i cambi di route e chiudi il menu
+watch(route, () => {
+    show_menu.value = false;
+});
 </script>
 
 <style scoped>
@@ -84,7 +105,7 @@ function showmenu() {
 
 
 #page-header a {
-    padding-bottom: 2px;
+    padding: 2px 0;
     color: aliceblue;
     text-decoration: none;
     position: relative;
@@ -116,11 +137,13 @@ function showmenu() {
     background-color: var(--primary-color);
     margin: 0;
     padding: 0;
+    justify-content: space-between;
+    display: flex;
 }
 
 .navbar nav {
     margin: auto;
-    max-width: 1024px;
+    width: 1024px;
     display: flex;
     justify-content: space-between;
 }
@@ -131,13 +154,29 @@ button {
     border: none;
 }
 
+#home-btn {
+    display: none;
+}
+
 @media (max-width: 800px) {
     .navbar nav {
         flex-direction: column;
     }
 
+    #home-btn {
+        display: block;
+    }
+
     #navbar-list {
         display: none;
+    }
+
+    #navbar-list.open {
+        display: block;
+    }
+
+    ul {
+        padding-left: 10px;
     }
 
     li {
@@ -148,5 +187,9 @@ button {
     button {
         display: block;
     }
+}
+
+svg path {
+    stroke: var(--primary-color-light);
 }
 </style>

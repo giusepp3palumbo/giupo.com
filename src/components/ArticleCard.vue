@@ -1,5 +1,5 @@
 <template>
-    <div class="article-preview">
+    <div class="article-card">
         <img v-bind:src="getImgUrl(item.thumbnail)" />
         <article>
 
@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-console.log("article.preview")
+console.log("article.card")
 const props = defineProps(['item'])
 
 function getImgUrl(id) {
@@ -23,23 +23,27 @@ function getImgUrl(id) {
 </script>
 
 <style scoped>
-.article-preview {
-    display: flex;
-    height: 200px;
-    margin-top: 40px;
+.article-card {
+    width: 300px;
+    height: 400px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
 }
 
 img {
-    width: 200px;
+    width: 100%;
     height: 200px;
+    object-fit: cover;
+}
+
+.content {
+    padding: 10px;
 }
 
 article {
     display: flex;
     flex-direction: column;
     margin: 0 20px;
-
 }
 
 a {
@@ -52,20 +56,26 @@ article h1 {
     letter-spacing: 0.2em;
     word-spacing: 0.2em;
     color: var(--primary-color);
-    padding-bottom: 2px;
     border-bottom: 1px solid;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-height: 1.4;
+    height: 2.8rem;
+    padding-bottom: 5px;
 }
 
 .summary {
+    margin: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     /* Numero di righe da mostrare */
     -webkit-box-orient: vertical;
-    max-height: 6em;
+    max-height: fit-content;
     /* Altezza massima in base al numero di righe e line-height */
-    line-height: 1.5em;
+    line-height: 1em;
     /* Assicurati che sia coerente con max-height */
     white-space: normal;
     /* Necessario per il multi-line truncation */
