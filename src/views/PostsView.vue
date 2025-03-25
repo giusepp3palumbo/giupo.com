@@ -1,4 +1,21 @@
 <template>
+    <div class="pagination">
+        <svg :class="{ disabled: currentPage === 1 }" @click="fetchItems(currentPage - 1)"
+            class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+            width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="m17 16-4-4 4-4m-6 8-4-4 4-4" />
+        </svg>
+        <span>Pagina {{ currentPage }} di {{ totalPages }}</span>
+        <svg :class="{ disabled: currentPage >= totalPages }" @click="fetchItems(currentPage + 1)"
+            class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+            width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="m7 16 4-4-4-4m6 8 4-4-4-4" />
+        </svg>
+
+    </div>
+
     <!-- Mostra la categoria selezionata -->
     <div v-if="selectedCategory" class="filter-info">
         Filtrando per: <strong>{{ selectedCategory }}</strong>
@@ -20,17 +37,19 @@ const userStore = useUserStore();
 const authorsMap = ref({});
 const categoryMap = ref({});
 const selectedCategory = ref(null);
+const currentPage = ref(1);
+const perPage = 2; // Numero di elementi per pagina
+const totalPages = ref(null);
 
 // Quando si seleziona una categoria, carica i dati filtrati
 const filterByCategory = async (category) => {
     selectedCategory.value = category;
-    await fetchFilteredItems(category);
+    await fetchItems();
 };
 
 // Funzione per filtrare i post
 const filteredPosts = computed(() => {
-    if (!selectedCategory.value) return fetchItems();
-    return fetchFiteredItems();
+    return fetchItems();
     //return allPosts.value.filter(post => post.category.some(c => c.category_id.name === selectedCategory.value)  );
 });
 
@@ -40,8 +59,16 @@ const resetFilter = async () => {
     await fetchItems();
 };
 
-const fetchItems = async () => {
-    const response = await fetch('http://localhost:8055/items/posts?fields=*,*.*.*',
+const fetchItems = async (page = 1) => {
+
+    let url = 'http://localhost:8055/items/posts'
+    if (selectedCategory.value) {
+        url += `?page=${page}&limit=${perPage}&meta=*&filter[category][category_id][name][_eq]=${selectedCategory.value}&fields=*,category.category_id.id,category.category_id.name`;
+    } else {
+        url += `?page=${page}&limit=${perPage}&meta=*&fields=*,*.*.*`
+    }
+
+    const response = await fetch(url,
         {
             headers: new Headers({
                 'Authorization': 'Basic ' + userStore.accessToken
@@ -53,6 +80,9 @@ const fetchItems = async () => {
         console.log("fetchItems data")
         console.log(data)
         items.value = data.data;
+        currentPage.value = page;
+        totalPages.value = Math.ceil(data.meta.filter_count / perPage);
+        console.log("currentPage: " + currentPage.value + ", totalPages:" + totalPages.value)
     }).catch(function (error) {
         console.error('Errore nel recupero dei posts.', error);
     })
@@ -139,8 +169,25 @@ onMounted(() => {
     border-radius: 5px;
 }
 
-button {
-    margin-left: 10px;
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+svg {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
     cursor: pointer;
+    border-radius: 4px;
+}
+
+.disabled {
+    background-color: gray;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 </style>
