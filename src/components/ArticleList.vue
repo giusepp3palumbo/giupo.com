@@ -1,6 +1,6 @@
 <template>
-    <component :is="componentMap[viewType]" v-for="item in items" :key="item.id" :item="item" :authorsMap="authorsMap"
-        :categoryMap="categoryMap" @categorySelected="handleCategorySelected" />
+    <component :is="componentMap[viewType]" v-for="item in items" :key="item.id" :item="item"
+        @categorySelected="handleCategorySelected" />
 </template>
 
 <script setup>

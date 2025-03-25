@@ -30,7 +30,7 @@
 
 <script setup>
 const emit = defineEmits(['categorySelected']);
-const props = defineProps(['item', 'authorsMap', 'categoryMap'])
+const props = defineProps(['item'])
 
 function getImgUrl(id) {
     return 'http://localhost:8055/assets/' + id

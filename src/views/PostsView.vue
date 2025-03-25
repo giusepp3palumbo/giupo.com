@@ -1,4 +1,5 @@
 <template>
+    <!-- Mostra la paginazione -->
     <div class="pagination">
         <svg :class="{ disabled: currentPage === 1 }" @click="fetchItems(currentPage - 1)"
             class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -13,17 +14,16 @@
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="m7 16 4-4-4-4m6 8 4-4-4-4" />
         </svg>
-
     </div>
 
     <!-- Mostra la categoria selezionata -->
     <div v-if="selectedCategory" class="filter-info">
-        Filtrando per: <strong>{{ selectedCategory }}</strong>
+        <p>Filtrando per: <strong>{{ selectedCategory }}</strong></p>
         <button @click="resetFilter">❌ Reset</button>
     </div>
 
-    <ArticleList :items="items" :authorsMap="authorsMap" :categoryMap="categoryMap" viewType="preview"
-        @categorySelected="filterByCategory" />
+    <!-- Mostra la lista di articoli -->
+    <ArticleList :items="items" viewType="preview" @categorySelected="filterByCategory" />
 </template>
 
 
@@ -71,7 +71,7 @@ const fetchItems = async (page = 1) => {
     const response = await fetch(url,
         {
             headers: new Headers({
-                'Authorization': 'Basic ' + userStore.accessToken
+
             })
         }
     ).then((response) => {
@@ -83,25 +83,6 @@ const fetchItems = async (page = 1) => {
         currentPage.value = page;
         totalPages.value = Math.ceil(data.meta.filter_count / perPage);
         console.log("currentPage: " + currentPage.value + ", totalPages:" + totalPages.value)
-    }).catch(function (error) {
-        console.error('Errore nel recupero dei posts.', error);
-    })
-}
-
-const fetchFilteredItems = async (category) => {
-    const response = await fetch(`http://localhost:8055/items/posts?filter[category][category_id][name][_eq]=${category}&fields=*,category.category_id.id,category.category_id.name&limit=-1`,
-
-        {
-            headers: new Headers({
-                'Authorization': 'Basic ' + userStore.accessToken
-            })
-        }
-    ).then((response) => {
-        return response.json();
-    }).then((data) => {
-        console.log("fetchItems data")
-        console.log(data)
-        items.value = data.data;
     }).catch(function (error) {
         console.error('Errore nel recupero dei posts.', error);
     })
@@ -165,19 +146,26 @@ onMounted(() => {
 .filter-info {
     margin-bottom: 10px;
     background: #eee;
-    padding: 10px;
     border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .pagination {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 5px;
     gap: 10px;
     margin-top: 20px;
 }
 
-svg {
+p {
+    margin: 0;
+    padding: 3px;
+}
+
+.pagination svg {
     background-color: var(--primary-color);
     color: white;
     border: none;
