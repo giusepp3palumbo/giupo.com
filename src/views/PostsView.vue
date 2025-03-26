@@ -1,4 +1,22 @@
 <template>
+
+
+
+    <!-- Mostra la categoria selezionata -->
+    <div v-if="selectedCategory" class="filter-info">
+        <p>Filtrando per: <strong>{{ selectedCategory }}</strong></p>
+
+        <svg @click="resetFilter" style="cursor: pointer;" class="w-6 h-6 text-gray-800 dark:text-white"
+            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+            viewBox="0 0 24 24">
+            <path stroke="red" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M6 18 17.94 6M18 18 6.06 6" />
+        </svg>
+
+    </div>
+
+    <!-- Mostra la lista di articoli -->
+    <ArticleList :items="items" viewType="preview" @categorySelected="filterByCategory" />
     <!-- Mostra la paginazione -->
     <div class="pagination">
         <svg :class="{ disabled: currentPage === 1 }" @click="fetchItems(currentPage - 1)"
@@ -15,15 +33,6 @@
                 d="m7 16 4-4-4-4m6 8 4-4-4-4" />
         </svg>
     </div>
-
-    <!-- Mostra la categoria selezionata -->
-    <div v-if="selectedCategory" class="filter-info">
-        <p>Filtrando per: <strong>{{ selectedCategory }}</strong></p>
-        <button @click="resetFilter">❌ Reset</button>
-    </div>
-
-    <!-- Mostra la lista di articoli -->
-    <ArticleList :items="items" viewType="preview" @categorySelected="filterByCategory" />
 </template>
 
 
@@ -145,7 +154,8 @@ onMounted(() => {
 <style scope>
 .filter-info {
     margin-bottom: 10px;
-    background: #eee;
+    background: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     display: flex;
     justify-content: space-between;

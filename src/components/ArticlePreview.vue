@@ -59,16 +59,32 @@ const selectCategory = (categoryName) => {
 
 <style scoped>
 .article-preview {
-
     display: flex;
+    align-items: center;
+    /* Allinea meglio il contenuto */
     margin-top: 40px;
-    box-shadow: 5px 5px 5px var(--primary-color-darker);
+    padding: 15px;
+    /* Aggiunge un po’ di respiro dentro il box */
+    border-radius: 8px;
+    /* Smussa leggermente gli angoli per un look più moderno */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+    /* Ombra più soft e diffusa */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
+
+.article-preview:hover {
+    transform: translateY(-3px);
+    /* Effetto leggero di sollevamento al passaggio del mouse */
+    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.2);
+    /* Ombra più marcata in hover */
+}
+
 
 img {
     width: 200px;
     height: 200px;
     object-fit: cover;
+    border-radius: 50%;
 }
 
 article {
@@ -88,11 +104,11 @@ h1 {
     width: 100%;
     margin: 0;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
-    word-spacing: 0.2em;
+    letter-spacing: 0.15em;
+    word-spacing: 0.1em;
     color: var(--primary-color);
-    padding-bottom: 2px;
-    border-bottom: 1px solid;
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--primary-color);
 }
 
 .meta-info {
@@ -135,6 +151,7 @@ h1 {
     background-color: var(--secondary-color);
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
     transform: scale(1.05);
+    transform: translateY(-3px);
 }
 
 .first-letter {

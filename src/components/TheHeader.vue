@@ -16,12 +16,14 @@
                         <RouterLink to="/projects">Projects</RouterLink>
                     </li>
                     <li>
-                        <RouterLink to="/about">About</RouterLink>
+                        <RouterLink to="/tech-stack">Tech Stack</RouterLink>
                     </li>
-                    <!--
-                    <li><a href="#sts">Skills & Tech Stack</a></li>
-                    <li><a href="#exp">Experience&Collabs</a></li>
-                    <li><a href="#contacts">Hire Me/Contacts</a></li>-->
+                    <li>
+                        <RouterLink to="/work">Work</RouterLink>
+                    </li>
+                    <li>
+                        <RouterLink to="/about">About Me</RouterLink>
+                    </li>
                 </ul>
                 <ul>
                     <li>
@@ -84,10 +86,19 @@ watch(route, () => {
 }
 
 #page-header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: capitalize;
+    font-style: italic;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    /* Effetto rilievo */
     margin: 0 auto;
     padding: 40px 0;
     max-width: 1024px;
 }
+
+
 
 @media (min-width: 801px) {
     #page-header ul {

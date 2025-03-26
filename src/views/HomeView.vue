@@ -1,5 +1,15 @@
 <template>
   <section>
+    <h1>Bio</h1>
+    <div class="about-me">
+      <img v-bind:src="getImgUrl()" alt="Profilo" class="profile-image" />
+      <div class="about-text">
+        <h2>Ciao, sono Giuseppe! 👋</h2>
+        <p>Appassionato di tecnologia, fotografia e sviluppo web. Qui trovi i miei ultimi articoli e progetti.</p>
+      </div>
+    </div>
+  </section>
+  <section>
     <h1>Featured Posts</h1>
     <div id="featured-posts">
       <ArticleList :items="items" viewType="card" />
@@ -41,9 +51,42 @@ const fetchItems = async () => {
 onMounted(() => {
   fetchItems();
 });
+
+function getImgUrl() {
+  return 'http://localhost:8055/assets/06752b73-d3eb-4e50-a456-6c924d1cc5c0'
+}
 </script>
 
 <style scoped>
+.about-me {
+  display: flex;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.profile-image {
+  width: 80px;
+  height: 100%;
+  /* border-radius: 50%;*/
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.about-text h2 {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.about-text p {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 5px;
+}
+
 #featured-posts {
   display: flex;
   height: 250px;
@@ -51,15 +94,25 @@ onMounted(() => {
   justify-content: center;
 }
 
+
+
 section h1 {
   margin: 0;
+  font-size: 2rem;
+  /* Aumenta la dimensione */
+  font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   word-spacing: 0.2em;
   color: var(--secondary-color);
   margin: 20px 0;
-  border-bottom: 1px solid;
+  border-bottom: 2px solid var(--primary-color);
+  /* Più spesso e con colore principale */
   text-align: center;
+  padding-bottom: 5px;
+  /* Per distanziarlo meglio */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  /* Leggero effetto 3D */
 }
 
 @media (max-width: 800px) {
