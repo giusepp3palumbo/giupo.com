@@ -3,7 +3,7 @@
 image_version=`date +%Y%m%d%H%M`;
 container_name="giupo.com"
 
-# Stop the container
+# Stop the container 
 docker stop $container_name || true;
 
 # Remove the container
