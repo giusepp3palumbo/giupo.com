@@ -5,15 +5,15 @@ registry="rasp03.fritz.box:5000/"
 container_name="giupo.com"
 
 # Stop the container
-echo "docker stop $container_name || true;"
+echo "[+] docker stop $container_name || true;"
 docker stop $container_name || true;
 
 # Remove the container
-echo "docker rm $container_name || true;"
+echo "[+] docker rm $container_name || true;"
 docker rm $container_name || true;
 
 # Remove the image
-echo "docker rmi --force $(docker images | grep $container_name | awk '{print $3}')"
+echo "[+] docker rmi --force $(docker images | grep $container_name | awk '{print $3}')"
 docker rmi --force $(docker images | grep $container_name | awk '{print $3}')
 
 # Build the $image_version image
@@ -29,7 +29,7 @@ docker run -p 9001:80 -d --name $container_name $container_name:$image_version;
 docker logs $container_name;
 
 # Remove images generated during the build process
-docker rmi $(docker images -f "dangling=true" -q)
+#docker rmi $(docker images -f "dangling=true" -q)
 
 # Automatically clean up space
-docker system prune -a -f
+#docker system prune -a -f

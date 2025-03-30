@@ -3,18 +3,20 @@ FROM --platform=$BUILDPLATFORM node:23-bookworm AS frontend-builder
 WORKDIR /app
 
 # copy project files and folders to the current working directory (i.e. 'app' folder)
-COPY . .
+COPY ./ /app
 RUN echo $(ls)
 
 # Installa le dipendenze e crea la build di produzione
 RUN npm install
-RUN npm run build 
+RUN npm run build
 
 # Fase finale: runtime
 FROM --platform=$TARGETPLATFORM nginx:bookworm AS runtime
 
+RUN echo $(ls app/)
+
 # Copia la build del frontend
-COPY --from=frontend-builder /app/web/static/dist /usr/share/nginx/html
+COPY --from=frontend-builder /app/dist /usr/share/nginx/html
 
 # Esponi la porta e avvia il server
 EXPOSE 80
