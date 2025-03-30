@@ -1,5 +1,5 @@
 # Build frontend
-FROM --platform=$BUILDPLATFORM node:23-bookworm AS frontend-builder
+FROM node:23-bookworm AS frontend-builder
 WORKDIR /app
 
 # copy project files and folders to the current working directory (i.e. 'app' folder)
