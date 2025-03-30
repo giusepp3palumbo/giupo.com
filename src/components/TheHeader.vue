@@ -98,9 +98,15 @@ watch(route, () => {
     max-width: 1024px;
 }
 
+@media (max-width: 800px) {
+    #page-header h1 {
+        font-size: 2em;
+    }
+}
 
 
 @media (min-width: 801px) {
+
     #page-header ul {
         margin: 0;
         padding: 20px 0;

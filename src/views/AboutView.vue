@@ -1,13 +1,11 @@
 <template>
-  <h1>This is an about page</h1>
+  <Page :postId="postId" />
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
+<script setup>
+import Page from '@/components/Page.vue';
+
+const postId = 2
+console.log("WorkView.vue")
+console.log(postId)
+</script>

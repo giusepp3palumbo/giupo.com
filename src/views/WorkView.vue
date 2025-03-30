@@ -1,12 +1,12 @@
 <template>
-    <ArticleDetail :postId="postId" />
+    <Page :postId="postId" />
 </template>
 
 <script setup>
-import ArticleDetail from '@/components/ArticleDetail.vue';
+import Page from '@/components/Page.vue';
 import { ref } from 'vue';
 
-const postId = ref(7)
+const postId = 1
 console.log("WorkView.vue")
 console.log(postId)
 </script>

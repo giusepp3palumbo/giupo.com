@@ -94,6 +94,14 @@ function getImgUrl() {
   justify-content: center;
 }
 
+@media (max-width: 800px) {
+  #featured-posts {
+    display: flex;
+    height: fit-content;
+    gap: 20px;
+    justify-content: center;
+  }
+}
 
 
 section h1 {

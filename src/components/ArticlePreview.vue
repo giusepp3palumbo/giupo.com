@@ -18,8 +18,7 @@
                             <circle cx="12" cy="12" r="10" :fill="getCategoryColor(c.category_id.name)" />
                         </svg>
 
-                        <span class="first-letter">{{ c.category_id.name.charAt(0) }}</span>
-                        <span class="category-text">{{ c.category_id.name.slice(1) }}</span>
+                        <span class="tag">{{ c.category_id.name }}</span>
                     </div>
                 </div>
             </div>
@@ -186,6 +185,10 @@ h1 {
 
     img {
         display: none;
+    }
+
+    .tag {
+        font-size: 0.8em;
     }
 
 }

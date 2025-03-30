@@ -8,6 +8,5 @@ console.log("postid: " + postId)
 </script>
 
 <template>
-
     <ArticleDetail :postId="postId" />
 </template>
