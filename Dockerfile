@@ -11,7 +11,7 @@ RUN npm install
 RUN npm run build
 
 # Fase finale: runtime
-FROM --platform=$TARGETPLATFORM nginx:bookworm AS runtime
+FROM nginx:bookworm AS runtime
 
 RUN echo $(ls app/)
 
