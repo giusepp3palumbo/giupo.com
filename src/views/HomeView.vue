@@ -27,8 +27,8 @@ const items = ref([]);
 const userStore = useUserStore();
 
 const fetchItems = async () => {
-
-  const response = await fetch('http://localhost:8055/items/posts?filter={ "featured": { "_eq": "true" }}',
+  let origin = window.location.origin;
+  const response = await fetch(origin + '/items/posts?filter={ "featured": { "_eq": "true" }}',
     {
       headers: new Headers({
         'Authorization': 'Basic ' + userStore.accessToken
@@ -53,7 +53,8 @@ onMounted(() => {
 });
 
 function getImgUrl() {
-  return 'http://localhost:8055/assets/06752b73-d3eb-4e50-a456-6c924d1cc5c0'
+  let origin = window.location.origin;
+  return origin + '/assets/06752b73-d3eb-4e50-a456-6c924d1cc5c0'
 }
 </script>
 
