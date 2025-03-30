@@ -28,7 +28,7 @@ const userStore = useUserStore();
 
 const fetchItems = async () => {
   let domain = window.location.hostname;
-  const response = await fetch(domain + '/directus' + '/items/posts?filter={ "featured": { "_eq": "true" }}',
+  const response = await fetch('/directus' + '/items/posts?filter={ "featured": { "_eq": "true" }}',
     {
       headers: new Headers({
         'Authorization': 'Basic ' + userStore.accessToken
