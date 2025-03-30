@@ -27,8 +27,8 @@ const items = ref([]);
 const userStore = useUserStore();
 
 const fetchItems = async () => {
-  let origin = window.location.origin;
-  const response = await fetch(origin + '/items/posts?filter={ "featured": { "_eq": "true" }}',
+  let domain = window.location.hostname;
+  const response = await fetch(domain + ':5173' + '/items/posts?filter={ "featured": { "_eq": "true" }}',
     {
       headers: new Headers({
         'Authorization': 'Basic ' + userStore.accessToken
