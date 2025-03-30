@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
 image_version=`date +%Y%m%d%H%M`;
+registry="rasp03.fritz.box:5000/"
 container_name="giupo.com"
 
-# Stop the container 
+# Stop the container
 docker stop $container_name || true;
 
 # Remove the container
@@ -13,7 +14,7 @@ docker rm $container_name || true;
 docker rmi --force $(docker images | grep $container_name | awk '{print $3}')
 
 # Build the $image_version image
-docker build . -t $container_name:$image_version;
+docker build . -t $registry$container_name:$image_version;
 
 # List the images
 docker images;
