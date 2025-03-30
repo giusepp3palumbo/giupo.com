@@ -18,7 +18,7 @@ const props = defineProps(['item'])
 
 function getImgUrl(id) {
     let domain = window.location.hostname;
-    return domain + ':5173' + '/assets/' + id
+    return domain + '/directus' + '/assets/' + id
 }
 
 </script>
