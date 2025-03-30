@@ -5,12 +5,15 @@ registry="rasp03.fritz.box:5000/"
 container_name="giupo.com"
 
 # Stop the container
+echo "docker stop $container_name || true;"
 docker stop $container_name || true;
 
 # Remove the container
+echo "docker rm $container_name || true;"
 docker rm $container_name || true;
 
 # Remove the image
+echo "docker rmi --force $(docker images | grep $container_name | awk '{print $3}')"
 docker rmi --force $(docker images | grep $container_name | awk '{print $3}')
 
 # Build the $image_version image
