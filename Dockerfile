@@ -18,6 +18,8 @@ RUN echo $(ls app/)
 # Copia la build del frontend
 COPY --from=frontend-builder /app/dist /usr/share/nginx/html
 
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 # Esponi la porta e avvia il server
 EXPOSE 80
 # Start Nginx to serve the application
