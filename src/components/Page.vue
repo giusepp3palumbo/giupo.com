@@ -17,8 +17,6 @@ import { useUserStore } from '@/stores/userStore'; // Importa lo store
 
 const props = defineProps(['slug'])
 
-console.log("props.postId: " + props.postId)
-
 const item = ref(null);
 const headings = ref([]) // Array degli <h2> trovati
 const parsedContent = ref('') // HTML modificato con gli id nei <h2>

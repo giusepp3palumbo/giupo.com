@@ -33,7 +33,7 @@ const router = createRouter({
     },
     {
       path: '/page/:slug',
-      name: page,
+      name: 'page',
       props: true,
       component: () => import('../views/PageView.vue'),
     },
