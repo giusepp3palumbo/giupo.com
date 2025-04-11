@@ -32,7 +32,8 @@ const userStore = useUserStore();
 
 const fetchItem = async () => {
     let origin = window.location.origin;
-    const response = await fetch(origin + "/directus" + '/items/posts/' + props.postId,
+    let url = origin + '/items/post/' + props.postId
+    const response = await fetch(url,
         {
             headers: new Headers({
                 'Authorization': 'Basic ' + userStore.accessToken

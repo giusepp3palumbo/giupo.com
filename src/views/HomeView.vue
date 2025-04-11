@@ -28,7 +28,7 @@ const userStore = useUserStore();
 
 const fetchItems = async () => {
   let origin = window.location.origin;
-  let url = origin + '/items/posts?filter={ "featured": { "_eq": "true" }}';
+  let url = origin + '/items/post?filter={ "featured": { "_eq": "true" }}';
   const response = await fetch(url,
     {
       headers: new Headers({

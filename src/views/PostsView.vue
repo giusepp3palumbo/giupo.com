@@ -70,7 +70,7 @@ const resetFilter = async () => {
 
 const fetchItems = async (page = 1) => {
     let origin = window.location.origin;
-    let url = origin + '/items/posts';
+    let url = origin + '/items/post';
     if (selectedCategory.value) {
         url += `?page=${page}&limit=${perPage}&meta=*&filter[category][category_id][name][_eq]=${selectedCategory.value}&fields=*,category.category_id.id,category.category_id.name`;
     } else {
