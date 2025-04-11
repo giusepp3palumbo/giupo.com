@@ -25,7 +25,7 @@ const userStore = useUserStore();
 
 const fetchItem = async () => {
     let origin = window.location.origin;
-    let url = origin + `/items/posts?filter[slug][_eq]=${props.slug}`
+    let url = origin + `/items/page?filter[slug][_eq]=${props.slug}`
     const response = await fetch(url,
         {
             headers: new Headers({
