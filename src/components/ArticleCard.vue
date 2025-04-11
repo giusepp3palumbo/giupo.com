@@ -17,8 +17,9 @@ console.log("article.card")
 const props = defineProps(['item'])
 
 function getImgUrl(id) {
-    let domain = window.location.hostname;
-    return domain + '/directus' + '/assets/' + id
+    let origin = window.location.origin;
+    let url = origin + '/assets/' + id;
+    return url
 }
 
 </script>

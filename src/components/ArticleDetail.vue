@@ -31,8 +31,8 @@ const parsedContent = ref('') // HTML modificato con gli id nei <h2>
 const userStore = useUserStore();
 
 const fetchItem = async () => {
-
-    const response = await fetch('http://localhost:8055/items/posts/' + props.postId,
+    let origin = window.location.origin;
+    const response = await fetch(origin + "/directus" + '/items/posts/' + props.postId,
         {
             headers: new Headers({
                 'Authorization': 'Basic ' + userStore.accessToken

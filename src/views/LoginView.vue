@@ -39,7 +39,9 @@ import { createDirectus, authentication } from '@directus/sdk';
 
 async function login(event) {
     try {
-        const client = createDirectus('http://localhost:8055').with(authentication());
+        let origin = window.location.origin;
+        let url = origin + 'items/pages/' + props.postId
+        const client = createDirectus(window.location.hostname).with(authentication());
         console.log(username.value + "/" + password.value)
         token = await client.login(username.value, password.value);
         userStore.setToken(token);

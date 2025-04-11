@@ -69,8 +69,8 @@ const resetFilter = async () => {
 };
 
 const fetchItems = async (page = 1) => {
-
-    let url = 'http://localhost:8055/items/posts'
+    let origin = window.location.origin;
+    let url = origin + '/items/posts';
     if (selectedCategory.value) {
         url += `?page=${page}&limit=${perPage}&meta=*&filter[category][category_id][name][_eq]=${selectedCategory.value}&fields=*,category.category_id.id,category.category_id.name`;
     } else {
@@ -100,7 +100,9 @@ const fetchItems = async (page = 1) => {
 
 const fetchAuthor = async () => {
     console.log("fetchAuthor")
-    const response = await fetch('http://localhost:8055/items/authors/',
+    let origin = window.location.origin;
+    let url = origin + '/items/authors/';
+    const response = await fetch(url,
         {
             headers: new Headers({
 
@@ -123,7 +125,9 @@ const fetchAuthor = async () => {
 
 const fetchCategory = async () => {
     console.log("fetchAuthor")
-    const response = await fetch('http://localhost:8055/items/category?fields=id,name',
+    let origin = window.location.origin;
+    let url = origin + '/items/category?fields=id,name';
+    const response = await fetch(url,
         {
             headers: new Headers({
 

@@ -32,7 +32,9 @@ const emit = defineEmits(['categorySelected']);
 const props = defineProps(['item'])
 
 function getImgUrl(id) {
-    return 'http://localhost:8055/assets/' + id
+    let origin = window.location.origin;
+    let url = origin + '/assets/' + id
+    return url
 }
 
 function formatDate(date) {

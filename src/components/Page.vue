@@ -23,8 +23,9 @@ const parsedContent = ref('') // HTML modificato con gli id nei <h2>
 const userStore = useUserStore();
 
 const fetchItem = async () => {
-
-    const response = await fetch('http://localhost:8055/items/pages/' + props.postId,
+    let origin = window.location.origin;
+    let url = origin + 'items/pages/' + props.postId
+    const response = await fetch(url,
         {
             headers: new Headers({
 
