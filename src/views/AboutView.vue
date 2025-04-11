@@ -5,7 +5,7 @@
 <script setup>
 import Page from '@/components/Page.vue';
 
-const postId = 2
+const postId = 1
 console.log("WorkView.vue")
 console.log(postId)
 </script>

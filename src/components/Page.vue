@@ -1,9 +1,12 @@
 <template>
-    <div class="article-container">
+    <div class="article-container" v-if="item">
         <article>
             <h1>{{ item.title }}</h1>
             <main v-html="item.content"></main>
         </article>
+    </div>
+    <div v-else>
+        <p>Loading...</p>
     </div>
 </template>
 
@@ -12,11 +15,11 @@
 import { onMounted, ref } from 'vue';
 import { useUserStore } from '@/stores/userStore'; // Importa lo store
 
-const props = defineProps(['postId'])
+const props = defineProps(['slug'])
 
 console.log("props.postId: " + props.postId)
 
-const item = ref([]);
+const item = ref(null);
 const headings = ref([]) // Array degli <h2> trovati
 const parsedContent = ref('') // HTML modificato con gli id nei <h2>
 
@@ -24,7 +27,7 @@ const userStore = useUserStore();
 
 const fetchItem = async () => {
     let origin = window.location.origin;
-    let url = origin + 'items/pages/' + props.postId
+    let url = origin + `/items/posts?filter[slug][_eq]=${props.slug}`
     const response = await fetch(url,
         {
             headers: new Headers({
@@ -36,8 +39,13 @@ const fetchItem = async () => {
     }).then((data) => {
         console.log("data")
         console.log(data)
-        item.value = data.data;
-        item.value.Content = parseHeadings(data.data.Content);
+
+        if (data.data.length > 0) {
+            item.value = response.data.data[0];  // Assegna i dati del post al ref
+        } else {
+            console.error('Post not found!');
+        }
+        item.value.content = parseHeadings(item.value.content);
     }).catch(function (error) {
         console.error('Errore nel recupero dei posts.', error);
     })

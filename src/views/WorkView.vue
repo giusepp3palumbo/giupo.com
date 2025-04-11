@@ -6,7 +6,7 @@
 import Page from '@/components/Page.vue';
 import { ref } from 'vue';
 
-const postId = 1
+const postId = 2
 console.log("WorkView.vue")
 console.log(postId)
 </script>

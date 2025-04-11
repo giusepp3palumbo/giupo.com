@@ -19,10 +19,10 @@
                         <RouterLink to="/tech-stack">Tech Stack</RouterLink>
                     </li>
                     <li>
-                        <RouterLink to="/work">Work</RouterLink>
+                        <RouterLink to="/page/work">Work</RouterLink>
                     </li>
                     <li>
-                        <RouterLink to="/about">About Me</RouterLink>
+                        <RouterLink to="/page/about-me">About Me</RouterLink>
                     </li>
                 </ul>
                 <ul>
