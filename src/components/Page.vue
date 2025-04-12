@@ -40,7 +40,14 @@ const fetchItem = async () => {
 
         if (data.data.length > 0) {
             item.value = data.data[0];  // Assegna i dati del post al ref
-            item.value.content = parseHeadings(data.data[0].content);
+            console.log('content:')
+            console.log(data.data[0].content)
+            try {
+
+                item.value.content = parseHeadings(data.data[0].content);
+            } catch (error) {
+                console.error('Errore; ', error);
+            }
         } else {
             console.error('Page not found: ' + props.slug);
         }
