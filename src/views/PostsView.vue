@@ -67,7 +67,7 @@ const fetchItems = async (page = 1) => {
     let origin = window.location.origin;
     let url = origin + '/items/post';
     if (selectedCategory.value) {
-        url += `?page=${page}&limit=${perPage}&meta=*&filter[category][category_id][name][_eq]=${selectedCategory.value}&fields=*,category.category_id.id,category.category_id.name`;
+        url += `?page=${page}&limit=${perPage}&meta=*&filter[category][name][_eq]=${selectedCategory.value}&fields=*,*.*.*`;
     } else {
         url += `?page=${page}&limit=${perPage}&meta=*&fields=*,*.*.*`
     }

@@ -13,12 +13,12 @@
                     <span class="date">{{ formatDate(item.created_at) }}</span>
                 </div>
                 <div class="category-container">
-                    <div class="category-icon" v-for="c in item.category" @click="selectCategory(c.id)">
+                    <div class="category-icon" v-for="category in item.category" @click="selectCategory(category.name)">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
-                            <circle cx="12" cy="12" r="10" :fill="getCategoryColor(c.name)" />
+                            <circle cx="12" cy="12" r="10" :fill="getCategoryColor(category.name)" />
                         </svg>
 
-                        <span class="tag">{{ c.name }}</span>
+                        <span class="tag">{{ category.name }}</span>
                     </div>
                 </div>
             </div>
