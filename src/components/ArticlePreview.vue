@@ -1,6 +1,6 @@
 <template>
     <div class="article-preview">
-        <img v-bind:src="getImgUrl(item.thumbnail)" />
+        <img v-bind:src="getImgUrl(item.thumbnail.id)" />
         <article>
 
             <RouterLink :to="{ name: 'post', params: { id: item.id } }">
