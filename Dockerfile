@@ -17,6 +17,7 @@ RUN echo $(ls app/)
 
 # Copia la build del frontend
 COPY --from=frontend-builder /app/dist /usr/share/nginx/html
+RUN chmod -R 755 /usr/share/nginx/html
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
