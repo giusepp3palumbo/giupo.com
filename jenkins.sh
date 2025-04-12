@@ -23,7 +23,7 @@ docker build . -t $registry$container_name:$image_version;
 docker images;
 
 # Create a container named from the image
-docker run -p 9001:80 -d --name $container_name $registry$container_name:$image_version;
+docker run -p 9001:80 -d --restart always --name $container_name $registry$container_name:$image_version;
 
 # View logs
 docker logs $container_name;

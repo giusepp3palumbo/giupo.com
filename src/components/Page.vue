@@ -41,11 +41,11 @@ const fetchItem = async () => {
         if (data.data.length > 0) {
             item.value = response.data.data[0];  // Assegna i dati del post al ref
         } else {
-            console.error('Post not found!');
+            console.error('Page not found: ' + props.slug);
         }
         item.value.content = parseHeadings(item.value.content);
     }).catch(function (error) {
-        console.error('Errore nel recupero dei posts.', error);
+        console.error('Errore nel recupero della pagina.', error);
     })
 
     console.log(item.value)
