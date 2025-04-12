@@ -2,7 +2,7 @@
     <div class="article-container">
         <article>
             <h1>{{ item.title }}</h1>
-            <main v-html="item.Content"></main>
+            <main v-html="item.content"></main>
         </article>
         <aside v-if="headings.length">
             <h1>On This Page</h1>
