@@ -78,6 +78,11 @@ function parseHeadings(htmlString) {
     return doc.body.innerHTML // Aggiorniamo il contenuto con gli id nei <h2>
 }
 
+
+watch(() => props.slug, (newSlug) => {
+    fetchItem();
+});
+
 // Carica i prodotti quando il componente è montato
 onMounted(() => {
     fetchItem();
