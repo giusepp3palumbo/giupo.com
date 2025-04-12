@@ -12,7 +12,7 @@
 
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { useUserStore } from '@/stores/userStore'; // Importa lo store
 
 const props = defineProps(['slug'])
