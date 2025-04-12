@@ -43,12 +43,12 @@ const fetchItem = async () => {
         } else {
             console.error('Page not found: ' + props.slug);
         }
+        console.log("item.value:")
+        console.log(item.value)
         item.value.content = parseHeadings(data.data[0].content);
     }).catch(function (error) {
         console.error('Errore nel recupero della pagina.', error);
     })
-    console.log("item.value:")
-    console.log(item.value)
 }
 
 // Carica i prodotti quando il componente è montato
