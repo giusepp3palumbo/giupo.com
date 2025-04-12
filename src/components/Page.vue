@@ -57,6 +57,27 @@ const fetchItem = async () => {
     })
 }
 
+function parseHeadings(htmlString) {
+    console.log("htmlString")
+    console.log(htmlString)
+    const parser = new DOMParser()
+    const doc = parser.parseFromString(htmlString, 'text/html')
+
+    const h2Elements = doc.querySelectorAll('h2')
+    console.log("h2Elements")
+    console.log(h2Elements)
+    const extractedHeadings = []
+
+    h2Elements.forEach((h2, index) => {
+        const id = `section-${index}` // Generiamo un ID unico
+        h2.setAttribute('id', id) // Aggiungiamo l'ID all'h2
+        extractedHeadings.push({ text: h2.textContent, id })
+    })
+
+    headings.value = extractedHeadings
+    return doc.body.innerHTML // Aggiorniamo il contenuto con gli id nei <h2>
+}
+
 // Carica i prodotti quando il componente è montato
 onMounted(() => {
     fetchItem();
