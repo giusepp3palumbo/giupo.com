@@ -32,10 +32,10 @@ const fetchItem = async () => {
 
             })
         }
-    ).then((response) => {
-        return response.json();
+    ).then((r) => {
+        return r.json();
     }).then((data) => {
-        console.log("data")
+        console.log("data***")
         console.log(data)
 
         if (data.data.length > 0) {
@@ -43,7 +43,6 @@ const fetchItem = async () => {
             console.log('content:')
             console.log(data.data[0].content)
             try {
-
                 item.value.content = parseHeadings(data.data[0].content);
             } catch (error) {
                 console.error('Errore; ', error);
