@@ -74,10 +74,13 @@ function showmenu() {
 
 const route = useRoute(); // Ottieni l'oggetto route attuale
 
-// Osserva i cambi di route e chiudi il menu
-watch(route, () => {
+watch(() => route.params.slug, (newSlug) => {
+    // Osserva i cambi di route e chiudi il menu
     show_menu.value = false;
+    // Ricarica i dati qui quando cambia lo slug
+    fetchData(newSlug);
 });
+
 </script>
 
 <style scoped>
