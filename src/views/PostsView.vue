@@ -39,7 +39,6 @@ import { useUserStore } from '@/stores/userStore'; // Importa lo store
 
 const items = ref([]);
 const userStore = useUserStore();
-const categoryMap = ref({});
 const selectedCategory = ref(null);
 const currentPage = ref(1);
 const perPage = 2; // Numero di elementi per pagina
@@ -93,34 +92,9 @@ const fetchItems = async (page = 1) => {
 }
 
 
-const fetchCategory = async () => {
-    console.log("fetchAuthor")
-    let origin = window.location.origin;
-    let url = origin + '/items/category?fields=id,name';
-    const response = await fetch(url,
-        {
-            headers: new Headers({
-
-            })
-        }
-    ).then((response) => {
-        return response.json();
-    }).then((data) => {
-        console.log("fetchCategory data")
-        console.log(data)
-        categoryMap.value = data.data.reduce((map, category) => {
-            map[category.id] = category.name;
-            return map;
-        }, {});
-    }).catch(function (error) {
-        console.error('Errore nel recupero dei category.', error);
-    })
-}
-
 // Carica i prodotti quando il componente è montato
 onMounted(() => {
     fetchItems();
-    fetchCategory();
 });
 </script>
 
