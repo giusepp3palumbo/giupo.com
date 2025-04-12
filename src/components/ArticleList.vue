@@ -13,7 +13,7 @@ const componentMap = {
     card: ArticleCard,
 };
 
-const props = defineProps(['items', 'authorsMap', 'categoryMap', 'viewType'])
+const props = defineProps(['items', 'viewType'])
 console.log("article.list: " + props.viewType)
 
 const emit = defineEmits(['categorySelected']);

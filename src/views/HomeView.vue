@@ -55,7 +55,7 @@ onMounted(() => {
 
 function getImgUrl() {
   let origin = window.location.origin;
-  let url = origin + '/assets/06752b73-d3eb-4e50-a456-6c924d1cc5c0'
+  let url = origin + '/assets/c3a9866b-406a-4b50-aeeb-c8fc1c181fa6'
   return url
 }
 </script>

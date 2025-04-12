@@ -1,7 +1,4 @@
 <template>
-
-
-
     <!-- Mostra la categoria selezionata -->
     <div v-if="selectedCategory" class="filter-info">
         <p>Filtrando per: <strong>{{ selectedCategory }}</strong></p>
@@ -12,7 +9,6 @@
             <path stroke="red" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M6 18 17.94 6M18 18 6.06 6" />
         </svg>
-
     </div>
 
     <!-- Mostra la lista di articoli -->
@@ -43,7 +39,6 @@ import { useUserStore } from '@/stores/userStore'; // Importa lo store
 
 const items = ref([]);
 const userStore = useUserStore();
-const authorsMap = ref({});
 const categoryMap = ref({});
 const selectedCategory = ref(null);
 const currentPage = ref(1);
@@ -98,31 +93,6 @@ const fetchItems = async (page = 1) => {
 }
 
 
-const fetchAuthor = async () => {
-    console.log("fetchAuthor")
-    let origin = window.location.origin;
-    let url = origin + '/items/authors/';
-    const response = await fetch(url,
-        {
-            headers: new Headers({
-
-            })
-        }
-    ).then((response) => {
-        return response.json();
-    }).then((data) => {
-        console.log("fetchAuthor data")
-        // console.log(data)
-        // Crea la mappa ID → Nome autore
-        authorsMap.value = data.data.reduce((map, author) => {
-            map[author.id] = author.name;
-            return map;
-        }, {});
-    }).catch(function (error) {
-        console.error('Errore nel recupero dei authors.', error);
-    })
-}
-
 const fetchCategory = async () => {
     console.log("fetchAuthor")
     let origin = window.location.origin;
@@ -149,7 +119,6 @@ const fetchCategory = async () => {
 
 // Carica i prodotti quando il componente è montato
 onMounted(() => {
-    fetchAuthor();
     fetchItems();
     fetchCategory();
 });
