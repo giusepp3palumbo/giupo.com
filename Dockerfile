@@ -16,7 +16,7 @@ FROM nginx:bookworm AS runtime
 RUN echo $(ls app/)
 
 # Copia la build del frontend
-COPY --from=frontend-builder /app/dist /usr/share/nginx/html
+COPY --from=frontend-builder /app/dist /etc/nginx/html
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
