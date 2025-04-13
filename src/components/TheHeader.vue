@@ -7,7 +7,7 @@
             <nav id="navbar-list" :class="{ 'open': show_menu }">
                 <ul>
                     <li>
-                        <RouterLink to="/">Home</RouterLink>
+                        <RouterLink to="/">giupo.com</RouterLink>
                     </li>
                     <li>
                         <RouterLink to="/posts">Blog</RouterLink>
@@ -84,6 +84,13 @@ watch(route, () => {
 </script>
 
 <style scoped>
+/* Su mobile nascondi il nome completo */
+@media (max-width: 768px) {
+    .tile {
+        display: none;
+    }
+}
+
 #page-header {
     height: max-content;
 }
