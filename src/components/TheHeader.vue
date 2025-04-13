@@ -1,12 +1,17 @@
 <template>
     <header id="page-header">
-        <div class="title">
+        <div class="desktop-title">
             <h1>Giuseppe Palumbo</h1>
         </div>
         <div class="navbar">
-            <RouterLink to="/">giupo.com</RouterLink>
+            <div class="logo-mobile">
+                <RouterLink to="/">giupo.com</RouterLink>
+            </div>
             <nav id="navbar-list" :class="{ 'open': show_menu }">
                 <ul>
+                    <li>
+                        <RouterLink to="/">giupo.com</RouterLink>
+                    </li>
                     <li>
                         <RouterLink to="/posts">Blog</RouterLink>
                     </li>
@@ -84,8 +89,22 @@ watch(route, () => {
 <style scoped>
 /* Su mobile nascondi il nome completo */
 @media (max-width: 768px) {
-    .title {
+    .desktop-title {
         display: none;
+    }
+}
+
+.logo-mobile {
+    display: none;
+    padding: 10px 15px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+}
+
+@media (max-width: 800px) {
+    .logo-mobile {
+        display: block;
     }
 }
 
