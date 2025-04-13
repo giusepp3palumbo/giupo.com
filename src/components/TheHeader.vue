@@ -189,22 +189,6 @@ watch(route, () => {
     justify-content: space-between;
 }
 
-<<<<<<< HEAD
-
-@media (max-width: 800px) {
-
-    .navbar {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 10px;
-    }
-
-    .navbar nav {
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-    }
-=======
 @media (max-width: 800px) {
     .navbar nav {
         flex-direction: column;
@@ -235,7 +219,6 @@ watch(route, () => {
         padding-right: 20px;
     }
 
->>>>>>> mergiare
 }
 
 /* ------------------------------
@@ -257,14 +240,6 @@ watch(route, () => {
     /* facoltativo, per fine-tuning */
 }
 
-<<<<<<< HEAD
-@media (max-width: 800px) {
-    #logo-mobile {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-=======
 #logo-mobile {
     display: none;
     padding: 10px 15px;
@@ -280,7 +255,6 @@ watch(route, () => {
 
     #logo-mobile {
         display: block;
->>>>>>> mergiare
     }
 }
 
@@ -375,15 +349,11 @@ button {
     display: none;
 }
 
-<<<<<<< HEAD
-
-=======
 @media (max-width: 800px) {
     button {
         display: block;
     }
 }
->>>>>>> mergiare
 
 
 
