@@ -205,8 +205,6 @@ aside {
     align-self: start;
 }
 
-
-
 @media (max-width: 800px) {
     .article-container {
         display: flex;
@@ -216,5 +214,35 @@ aside {
     aside {
         position: relative;
     }
+}
+
+
+.category-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.category-icon {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    background-color: var(--info-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.category-icon:hover {
+    background-color: var(--secondary-color);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+    transform: translateY(-3px);
 }
 </style>
