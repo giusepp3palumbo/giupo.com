@@ -99,7 +99,7 @@ watch(route, () => {
     padding: 10px 15px;
     font-size: 1.5em;
     font-weight: bold;
-    color: white;
+    color: var(--info-color);
 }
 
 @media (max-width: 768px) {
@@ -110,6 +110,7 @@ watch(route, () => {
 
 .logo-desktop {
     display: none;
+    color: var(--info-color);
 }
 
 @media (max-width: 768px) {
