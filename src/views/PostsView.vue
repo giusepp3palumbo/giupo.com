@@ -13,7 +13,9 @@
 
     <!-- Mostra la lista di articoli -->
     <div class="article-container">
-        <ArticleList :items="items" viewType="preview" @categorySelected="filterByCategory" />
+        <div>
+            <ArticleList :items="items" viewType="preview" @categorySelected="filterByCategory" />
+        </div>
         <aside v-if="categories.length">
             <h1>Filter by:</h1>
             <ul>
