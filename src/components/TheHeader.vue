@@ -4,12 +4,12 @@
             <h1>Giuseppe Palumbo</h1>
         </div>
         <div class="navbar">
-            <div class="logo-mobile">
+            <div id="logo-mobile">
                 <RouterLink to="/">giupo.com</RouterLink>
             </div>
             <nav id="navbar-list" :class="{ 'open': show_menu }">
                 <ul>
-                    <li class="logo-desktop">
+                    <li id="logo-desktop">
                         <RouterLink to="/"><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                 viewBox="0 0 24 24">
@@ -100,33 +100,33 @@ watch(route, () => {
     }
 }
 
-.logo-mobile {
+#logo-mobile {
     display: none;
     padding: 10px 15px;
     font-size: 1.5em;
     font-weight: bold;
 }
 
-.logo-mobile a {
+#logo-mobile a {
     color: var(--info-color);
 }
 
 @media (max-width: 768px) {
-    .logo-mobile {
+    #logo-mobile {
         display: block;
     }
 }
 
-.logo-desktop {
+#logo-desktop {
     display: none;
 }
 
-.logo-desktop a {
+#logo-desktop a {
     color: var(--info-color);
 }
 
 @media (max-width: 768px) {
-    .logo-desktop {
+    #logo-desktop {
         display: block;
     }
 }
