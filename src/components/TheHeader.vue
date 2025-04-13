@@ -207,9 +207,10 @@ button {
         flex-direction: column;
     }
 
+    /*
     #home-btn {
         display: block;
-    }
+    } */
 
     #navbar-list {
         display: none;
