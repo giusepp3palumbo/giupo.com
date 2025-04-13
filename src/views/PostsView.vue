@@ -220,6 +220,7 @@ aside {
 
 
 .category-container {
+    margin-top: 10px;
     display: flex;
     align-items: center;
     gap: 10px;
