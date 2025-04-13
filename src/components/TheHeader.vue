@@ -145,6 +145,22 @@ watch(route, () => {
     justify-content: space-between;
 }
 
+
+@media (max-width: 800px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px;
+    }
+
+    .navbar nav {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+}
+
 /* ------------------------------
    🔹 Logo: Mobile e Desktop
 ------------------------------ */
@@ -169,6 +185,15 @@ watch(route, () => {
     margin-right: 5px;
     transform: translateY(-1px);
     /* facoltativo, per fine-tuning */
+}
+
+@media (max-width: 800px) {
+    #logo-mobile {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
 }
 
 /* ------------------------------
@@ -237,6 +262,34 @@ watch(route, () => {
         padding-right: 20px;
     }
 
+    #navbar-list {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 0.75rem;
+        padding: 10px 0;
+    }
+
+    #navbar-list.open {
+        display: flex;
+    }
+
+    ul {
+        padding-left: 0;
+        list-style: none;
+        width: 100%;
+    }
+
+    li {
+        padding: 8px 10px;
+        width: 100%;
+    }
+
+    button {
+        display: block;
+        background: none;
+        border: none;
+    }
 }
 
 
@@ -251,37 +304,7 @@ button {
     display: none;
 }
 
-@media (max-width: 800px) {
-    .navbar nav {
-        flex-direction: column;
-    }
 
-    /*
-    #home-btn {
-        display: block;
-    } */
-
-    #navbar-list {
-        display: none;
-    }
-
-    #navbar-list.open {
-        display: block;
-    }
-
-    ul {
-        padding-left: 10px;
-    }
-
-    li {
-        display: block;
-        padding-right: 20px;
-    }
-
-    button {
-        display: block;
-    }
-}
 
 svg path {
     stroke: var(--primary-color-light);
