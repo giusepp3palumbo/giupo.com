@@ -110,7 +110,7 @@ const fetchItems = async (page = 1) => {
 
 const fetchCategories = async () => {
     let origin = window.location.origin;
-    let url = origin + '/items/category&fields=*';
+    let url = origin + '/items/category?fields=*';
 
     const response = await fetch(url,
         {
