@@ -1,71 +1,103 @@
 <template>
     <header id="page-header">
-        <div class="desktop-title">
-            <h1>Giuseppe Palumbo</h1>
-        </div>
-        <div class="navbar">
-            <div id="logo-mobile">
-                <RouterLink to="/">giupo.com</RouterLink>
+        <!-- 🔹 DESKTOP HEADER -->
+        <div class="page-header-desktop">
+            <div>
+                <h1>Giuseppe Palumbo</h1>
             </div>
-            <nav id="navbar-list" :class="{ 'open': show_menu }">
-                <ul>
-                    <li id="logo-desktop">
-                        <RouterLink to="/"><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
-                                viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
-                            </svg> giupo.com</RouterLink>
-                    </li>
-                    <li>
-                        <RouterLink to="/posts">Blog</RouterLink>
-                    </li>
-                    <!--
-                    <li>
-                        <RouterLink to="/projects">Progetti</RouterLink>
-                    </li>
-                    -->
-                    <li>
-                        <RouterLink to="/tech-stack">Tech Stack</RouterLink>
-                    </li>
-                    <li>
-                        <RouterLink to="/page/work-experience">Curriculum</RouterLink>
-                    </li>
-                    <li>
-                        <RouterLink to="/page/about-me">About Me</RouterLink>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <RouterLink to="/login">Login</RouterLink>
-                    </li>
-                    <li>
-                        <RouterLink to="/register">Sign In</RouterLink>
-                    </li>
-                </ul>
-            </nav>
-            <RouterLink id="home-btn" v-if="!show_menu" to="/">
-                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                    width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
-                </svg>
-            </RouterLink>
-            <button v-if="!show_menu" v-on:click="showmenu">
-                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                    width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
-                        d="M9 8h10M9 12h10M9 16h10M4.99 8H5m-.02 4h.01m0 4H5" />
-                </svg>
-            </button>
-            <button v-else v-on:click="showmenu">
-                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                    width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="m5 15 7-7 7 7" />
-                </svg>
-            </button>
+            <div class="navbar">
+                <nav id="navbar-list">
+                    <ul>
+                        <li id="logo-desktop">
+                            <RouterLink to="/"><svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                    viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
+                                </svg> giupo.com</RouterLink>
+                        </li>
+                        <li>
+                            <RouterLink to="/posts">Blog</RouterLink>
+                        </li>
+                        <li>
+                            <RouterLink to="/tech-stack">Tech Stack</RouterLink>
+                        </li>
+                        <li>
+                            <RouterLink to="/page/work-experience">Curriculum</RouterLink>
+                        </li>
+                        <li>
+                            <RouterLink to="/page/about-me">About Me</RouterLink>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <RouterLink to="/login">Login</RouterLink>
+                        </li>
+                        <li>
+                            <RouterLink to="/register">Sign In</RouterLink>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- 🔹 MOBILE HEADER -->
+        <div class="page-header-mobile">
+            <div class="navbar">
+                <div id="logo-mobile">
+                    <RouterLink to="/">giupo.com</RouterLink>
+                </div>
+                <!-- hamburger -->
+                <button v-if="!show_menu" v-on:click="showmenu">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
+                            d="M9 8h10M9 12h10M9 16h10M4.99 8H5m-.02 4h.01m0 4H5" />
+                    </svg>
+                </button>
+                <!-- row up -->
+                <button v-else v-on:click="showmenu">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m5 15 7-7 7 7" />
+                    </svg>
+                </button>
+                <RouterLink id="home-btn" v-if="!show_menu" to="/">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5" />
+                    </svg>
+                </RouterLink>
+            </div>
+            <div class="navbar">
+                <nav id="navbar-list-mobile" :class="{ 'open': show_menu }">
+                    <ul>
+                        <li>
+                            <RouterLink to="/posts">Blog</RouterLink>
+                        </li>
+                        <li>
+                            <RouterLink to="/tech-stack">Tech Stack</RouterLink>
+                        </li>
+                        <li>
+                            <RouterLink to="/page/work-experience">Curriculum</RouterLink>
+                        </li>
+                        <li>
+                            <RouterLink to="/page/about-me">About Me</RouterLink>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <RouterLink to="/login">Login</RouterLink>
+                        </li>
+                        <li>
+                            <RouterLink to="/register">Sign In</RouterLink>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
 </template>
@@ -114,14 +146,26 @@ watch(route, () => {
     max-width: 1024px;
 }
 
+.page-header-desktop {
+    display: block;
+}
+
+.page-header-mobile {
+    display: none;
+}
+
 /* Su mobile nascondi il nome completo */
 @media (max-width: 768px) {
-    .desktop-title {
+    #page-header h1 {
+        font-size: 2em;
+    }
+
+    .page-header-desktop {
         display: none;
     }
 
-    #page-header h1 {
-        font-size: 2em;
+    .page-header-mobile {
+        display: block;
     }
 }
 
@@ -145,6 +189,7 @@ watch(route, () => {
     justify-content: space-between;
 }
 
+<<<<<<< HEAD
 
 @media (max-width: 800px) {
 
@@ -159,25 +204,50 @@ watch(route, () => {
         align-items: flex-start;
         width: 100%;
     }
+=======
+@media (max-width: 800px) {
+    .navbar nav {
+        flex-direction: column;
+    }
+
+    #navbar-list {
+        display: none;
+    }
+
+    #navbar-list.open {
+        display: block;
+    }
+
+    #navbar-list-mobile {
+        display: none;
+    }
+
+    #navbar-list-mobile.open {
+        display: block;
+    }
+
+    .navbar ul {
+        padding-left: 10px;
+    }
+
+    .navbar li {
+        display: block;
+        padding-right: 20px;
+    }
+
+>>>>>>> mergiare
 }
 
 /* ------------------------------
    🔹 Logo: Mobile e Desktop
 ------------------------------ */
 
-#logo-mobile {
-    display: none;
-    padding: 10px 15px;
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
 #logo-desktop {
     display: none;
 }
 
 #logo-desktop>a {
-    color: var(--info-color);
+    color: var(--primary-color-light) !important;
 }
 
 #logo-desktop svg {
@@ -187,12 +257,30 @@ watch(route, () => {
     /* facoltativo, per fine-tuning */
 }
 
+<<<<<<< HEAD
 @media (max-width: 800px) {
     #logo-mobile {
         display: flex;
         justify-content: space-between;
         align-items: center;
         width: 100%;
+=======
+#logo-mobile {
+    display: none;
+    padding: 10px 15px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    #logo-desktop {
+        display: none;
+        /* nasconde il logo duplicato nel menu */
+    }
+
+    #logo-mobile {
+        display: block;
+>>>>>>> mergiare
     }
 }
 
@@ -200,9 +288,8 @@ watch(route, () => {
    🔹 Navigation Links
 ------------------------------ */
 
-
 #page-header a {
-    padding: 2px 0;
+    padding: 4px 0;
     color: aliceblue;
     text-decoration: none;
     position: relative;
@@ -230,25 +317,6 @@ watch(route, () => {
     transform: scaleY(2);
 }
 
-
-/* ------------------------------
-   🔹 Responsive (Mobile)
------------------------------- */
-
-
-@media (max-width: 768px) {
-    #logo-mobile {
-        display: block;
-    }
-
-    #logo-desktop {
-        display: none;
-        /* nasconde il logo duplicato nel menu */
-    }
-}
-
-
-
 @media (min-width: 801px) {
 
     #page-header ul {
@@ -259,7 +327,7 @@ watch(route, () => {
 
     #page-header li {
         display: inline-block;
-        padding-right: 20px;
+        padding-right: 30px;
     }
 
     #navbar-list {
@@ -293,6 +361,9 @@ watch(route, () => {
 }
 
 
+/* ------------------------------
+   🔹 Button Responsive (Mobile)
+------------------------------ */
 
 button {
     display: none;
@@ -303,6 +374,16 @@ button {
 #home-btn {
     display: none;
 }
+
+<<<<<<< HEAD
+
+=======
+@media (max-width: 800px) {
+    button {
+        display: block;
+    }
+}
+>>>>>>> mergiare
 
 
 
