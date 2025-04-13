@@ -9,7 +9,7 @@
             </div>
             <nav id="navbar-list" :class="{ 'open': show_menu }">
                 <ul>
-                    <li>
+                    <li class="logo-desktop">
                         <RouterLink to="/">giupo.com</RouterLink>
                     </li>
                     <li>
@@ -102,8 +102,18 @@ watch(route, () => {
     color: white;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
     .logo-mobile {
+        display: block;
+    }
+}
+
+.logo-desktop {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .logo-desktop {
         display: block;
     }
 }
