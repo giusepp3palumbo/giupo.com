@@ -107,10 +107,6 @@ watch(route, () => {
     font-weight: bold;
 }
 
-#logo-mobile a {
-    color: var(--info-color);
-}
-
 @media (max-width: 768px) {
     #logo-mobile {
         display: block;
@@ -121,13 +117,21 @@ watch(route, () => {
     display: none;
 }
 
-#logo-desktop a {
+#logo-desktop>a {
     color: var(--info-color);
+}
+
+#logo-desktop svg {
+    vertical-align: middle;
+    margin-right: 5px;
+    transform: translateY(-1px);
+    /* facoltativo, per fine-tuning */
 }
 
 @media (max-width: 768px) {
     #logo-desktop {
-        display: block;
+        display: none;
+        /* nasconde il logo duplicato nel menu */
     }
 }
 
