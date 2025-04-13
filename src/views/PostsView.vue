@@ -216,6 +216,10 @@ aside {
     aside {
         position: relative;
     }
+
+    aside ul {
+        display: flex;
+    }
 }
 
 aside ul {
