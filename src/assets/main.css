@@ -72,14 +72,31 @@ p {
   }
 }*/
 
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   #page-main {
     flex-direction: column;
     gap: 0;
+    padding: 0 1rem;
+    max-width: 95%;
+    margin: auto;
+  }
+
+  p,
+  li {
+    text-align: left;
+  }
+
+  li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
   }
 
   main aside {
     flex-basis: 100px;
     border-bottom: 1px solid;
+  }
+
+  article h1 {
+    font-weight: 600;
   }
 }
