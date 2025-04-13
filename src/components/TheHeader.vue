@@ -4,11 +4,9 @@
             <h1>Giuseppe Palumbo</h1>
         </div>
         <div class="navbar">
+            <RouterLink to="/">giupo.com</RouterLink>
             <nav id="navbar-list" :class="{ 'open': show_menu }">
                 <ul>
-                    <li>
-                        <RouterLink to="/">giupo.com</RouterLink>
-                    </li>
                     <li>
                         <RouterLink to="/posts">Blog</RouterLink>
                     </li>
@@ -86,7 +84,7 @@ watch(route, () => {
 <style scoped>
 /* Su mobile nascondi il nome completo */
 @media (max-width: 768px) {
-    .tile {
+    .title {
         display: none;
     }
 }
