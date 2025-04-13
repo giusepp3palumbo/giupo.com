@@ -99,6 +99,9 @@ watch(route, () => {
     padding: 10px 15px;
     font-size: 1.5em;
     font-weight: bold;
+}
+
+.logo-mobile a {
     color: var(--info-color);
 }
 
@@ -110,6 +113,9 @@ watch(route, () => {
 
 .logo-desktop {
     display: none;
+}
+
+.logo-desktop a {
     color: var(--info-color);
 }
 
