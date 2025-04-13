@@ -304,34 +304,6 @@ watch(route, () => {
         padding-right: 30px;
     }
 
-    #navbar-list {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        gap: 0.75rem;
-        padding: 10px 0;
-    }
-
-    #navbar-list.open {
-        display: flex;
-    }
-
-    ul {
-        padding-left: 0;
-        list-style: none;
-        width: 100%;
-    }
-
-    li {
-        padding: 8px 10px;
-        width: 100%;
-    }
-
-    button {
-        display: block;
-        background: none;
-        border: none;
-    }
 }
 
 
