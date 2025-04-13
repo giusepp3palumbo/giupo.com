@@ -148,8 +148,8 @@ const selectCategory = async (categoryName) => {
 
 // Carica i prodotti quando il componente è montato
 onMounted(() => {
-    fetchCategories();
     fetchItems();
+    fetchCategories();
 });
 </script>
 
@@ -218,6 +218,11 @@ aside {
     }
 }
 
+aside ul {
+    margin: 0;
+    padding: 20px 0;
+    list-style-type: none;
+}
 
 .category-container {
     margin-top: 10px;
@@ -231,15 +236,13 @@ aside {
     display: flex;
     align-items: center;
     gap: 2px;
-    background-color: var(--info-color);
-    color: white;
     padding: 5px 10px;
+    margin: 2px;
     border-radius: 15px;
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .category-icon:hover {
