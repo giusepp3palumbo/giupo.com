@@ -108,43 +108,41 @@ watch(route, () => {
     text-transform: capitalize;
     font-style: italic;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    /* Effetto rilievo */
     margin: 0 auto;
-    padding: 2.5rem 0;
+    padding: 40px 0;
     max-width: 1024px;
 }
 
-.desktop-title {
-    display: block;
-}
-
+/* Su mobile nascondi il nome completo */
 @media (max-width: 768px) {
     .desktop-title {
         display: none;
     }
 
     #page-header h1 {
-        font-size: 2rem;
+        font-size: 2em;
     }
 }
-
 
 /* ------------------------------
    🔹 Navbar Layout
 ------------------------------ */
 
+
 .navbar {
-    display: flex;
-    justify-content: space-between;
     background-color: var(--primary-color);
-    padding: 0;
     margin: 0;
+    padding: 0;
+    justify-content: space-between;
+    display: flex;
 }
 
 .navbar nav {
-    display: flex;
-    justify-content: space-between;
     margin: auto;
     width: 1024px;
+    display: flex;
+    justify-content: space-between;
 }
 
 /* ------------------------------
@@ -153,39 +151,33 @@ watch(route, () => {
 
 #logo-mobile {
     display: none;
-    padding: 0.75rem 1rem;
-    font-size: 1.5rem;
+    padding: 10px 15px;
+    font-size: 1.5em;
     font-weight: bold;
 }
 
-#logo-mobile>a {
-    color: var(--info-color);
-    text-decoration: none;
-}
-
-/* Nascondi logo desktop nel menu mobile */
 #logo-desktop {
     display: none;
 }
 
-#logo-desktop svg {
-    vertical-align: middle;
-    margin-right: 0.5rem;
-    transform: translateY(-1px);
-}
-
 #logo-desktop>a {
     color: var(--info-color);
-    text-decoration: none;
 }
 
+#logo-desktop svg {
+    vertical-align: middle;
+    margin-right: 5px;
+    transform: translateY(-1px);
+    /* facoltativo, per fine-tuning */
+}
 
 /* ------------------------------
    🔹 Navigation Links
 ------------------------------ */
 
+
 #page-header a {
-    padding: 0.25rem 0;
+    padding: 2px 0;
     color: aliceblue;
     text-decoration: none;
     position: relative;
@@ -194,14 +186,14 @@ watch(route, () => {
 #page-header a::after {
     content: '';
     position: absolute;
-    left: 0;
-    bottom: 0;
+    left: 0px;
+    bottom: 0px;
     width: 100%;
     height: 3px;
     background-color: #fefefe;
     transform-origin: bottom right;
-    transform: scaleX(0);
     transition: transform 0.5s ease;
+    transform: scaleX(0);
 }
 
 #page-header a:hover::after {
@@ -218,10 +210,56 @@ watch(route, () => {
    🔹 Responsive (Mobile)
 ------------------------------ */
 
+
+@media (max-width: 768px) {
+    #logo-mobile {
+        display: block;
+    }
+
+    #logo-desktop {
+        display: none;
+        /* nasconde il logo duplicato nel menu */
+    }
+}
+
+
+
+@media (min-width: 801px) {
+
+    #page-header ul {
+        margin: 0;
+        padding: 20px 0;
+        list-style-type: none;
+    }
+
+    #page-header li {
+        display: inline-block;
+        padding-right: 20px;
+    }
+
+}
+
+
+
+button {
+    display: none;
+    background: none;
+    border: none;
+}
+
+#home-btn {
+    display: none;
+}
+
 @media (max-width: 800px) {
     .navbar nav {
         flex-direction: column;
     }
+
+    /*
+    #home-btn {
+        display: block;
+    } */
 
     #navbar-list {
         display: none;
@@ -232,37 +270,18 @@ watch(route, () => {
     }
 
     ul {
-        padding-left: 0.75rem;
+        padding-left: 10px;
     }
 
     li {
         display: block;
-        padding-right: 1rem;
+        padding-right: 20px;
     }
 
     button {
         display: block;
-        background: none;
-        border: none;
-    }
-
-    #logo-mobile {
-        display: block;
-    }
-
-    #logo-desktop {
-        display: none;
-    }
-
-    #home-btn {
-        display: block;
     }
 }
-
-
-/* ------------------------------
-   🔹 Icons
------------------------------- */
 
 svg path {
     stroke: var(--primary-color-light);
