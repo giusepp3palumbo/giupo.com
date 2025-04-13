@@ -93,47 +93,9 @@ watch(route, () => {
 </script>
 
 <style scoped>
-/* Su mobile nascondi il nome completo */
-@media (max-width: 768px) {
-    .desktop-title {
-        display: none;
-    }
-}
-
-#logo-mobile {
-    display: none;
-    padding: 10px 15px;
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-@media (max-width: 768px) {
-    #logo-mobile {
-        display: block;
-    }
-}
-
-#logo-desktop {
-    display: none;
-}
-
-#logo-desktop>a {
-    color: var(--info-color);
-}
-
-#logo-desktop svg {
-    vertical-align: middle;
-    margin-right: 5px;
-    transform: translateY(-1px);
-    /* facoltativo, per fine-tuning */
-}
-
-@media (max-width: 768px) {
-    #logo-desktop {
-        display: none;
-        /* nasconde il logo duplicato nel menu */
-    }
-}
+/* ------------------------------
+   🔹 Base - Header & Titolo
+------------------------------ */
 
 #page-header {
     height: max-content;
@@ -146,37 +108,84 @@ watch(route, () => {
     text-transform: capitalize;
     font-style: italic;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    /* Effetto rilievo */
     margin: 0 auto;
-    padding: 40px 0;
+    padding: 2.5rem 0;
     max-width: 1024px;
 }
 
-@media (max-width: 800px) {
+.desktop-title {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .desktop-title {
+        display: none;
+    }
+
     #page-header h1 {
-        font-size: 2em;
+        font-size: 2rem;
     }
 }
 
 
-@media (min-width: 801px) {
+/* ------------------------------
+   🔹 Navbar Layout
+------------------------------ */
 
-    #page-header ul {
-        margin: 0;
-        padding: 20px 0;
-        list-style-type: none;
-    }
-
-    #page-header li {
-        display: inline-block;
-        padding-right: 20px;
-    }
-
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--primary-color);
+    padding: 0;
+    margin: 0;
 }
 
+.navbar nav {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 1024px;
+}
+
+/* ------------------------------
+   🔹 Logo: Mobile e Desktop
+------------------------------ */
+
+#logo-mobile {
+    display: none;
+    padding: 0.75rem 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#logo-mobile>a {
+    color: var(--info-color);
+    text-decoration: none;
+}
+
+/* Nascondi logo desktop nel menu mobile */
+#logo-desktop {
+    display: none;
+}
+
+#logo-desktop svg {
+    vertical-align: middle;
+    margin-right: 0.5rem;
+    transform: translateY(-1px);
+}
+
+#logo-desktop>a {
+    color: var(--info-color);
+    text-decoration: none;
+}
+
+
+/* ------------------------------
+   🔹 Navigation Links
+------------------------------ */
 
 #page-header a {
-    padding: 2px 0;
+    padding: 0.25rem 0;
     color: aliceblue;
     text-decoration: none;
     position: relative;
@@ -185,14 +194,14 @@ watch(route, () => {
 #page-header a::after {
     content: '';
     position: absolute;
-    left: 0px;
-    bottom: 0px;
+    left: 0;
+    bottom: 0;
     width: 100%;
     height: 3px;
     background-color: #fefefe;
     transform-origin: bottom right;
-    transition: transform 0.5s ease;
     transform: scaleX(0);
+    transition: transform 0.5s ease;
 }
 
 #page-header a:hover::after {
@@ -204,40 +213,15 @@ watch(route, () => {
     transform: scaleY(2);
 }
 
-.navbar {
-    background-color: var(--primary-color);
-    margin: 0;
-    padding: 0;
-    justify-content: space-between;
-    display: flex;
-}
 
-.navbar nav {
-    margin: auto;
-    width: 1024px;
-    display: flex;
-    justify-content: space-between;
-}
-
-button {
-    display: none;
-    background: none;
-    border: none;
-}
-
-#home-btn {
-    display: none;
-}
+/* ------------------------------
+   🔹 Responsive (Mobile)
+------------------------------ */
 
 @media (max-width: 800px) {
     .navbar nav {
         flex-direction: column;
     }
-
-    /*
-    #home-btn {
-        display: block;
-    } */
 
     #navbar-list {
         display: none;
@@ -248,18 +232,37 @@ button {
     }
 
     ul {
-        padding-left: 10px;
+        padding-left: 0.75rem;
     }
 
     li {
         display: block;
-        padding-right: 20px;
+        padding-right: 1rem;
     }
 
     button {
         display: block;
+        background: none;
+        border: none;
+    }
+
+    #logo-mobile {
+        display: block;
+    }
+
+    #logo-desktop {
+        display: none;
+    }
+
+    #home-btn {
+        display: block;
     }
 }
+
+
+/* ------------------------------
+   🔹 Icons
+------------------------------ */
 
 svg path {
     stroke: var(--primary-color-light);
