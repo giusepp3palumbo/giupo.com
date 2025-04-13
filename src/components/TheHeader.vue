@@ -12,14 +12,16 @@
                     <li>
                         <RouterLink to="/posts">Blog</RouterLink>
                     </li>
+                    <!--
                     <li>
-                        <RouterLink to="/projects">Projects</RouterLink>
+                        <RouterLink to="/projects">Progetti</RouterLink>
                     </li>
+                    -->
                     <li>
                         <RouterLink to="/tech-stack">Tech Stack</RouterLink>
                     </li>
                     <li>
-                        <RouterLink to="/page/work-experience">Work</RouterLink>
+                        <RouterLink to="/page/work-experience">Curriculum</RouterLink>
                     </li>
                     <li>
                         <RouterLink to="/page/about-me">About Me</RouterLink>

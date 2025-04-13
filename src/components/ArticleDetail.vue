@@ -45,7 +45,7 @@ const fetchItem = async () => {
         console.log("data")
         console.log(data)
         item.value = data.data;
-        item.value.Content = parseHeadings(data.data.Content);
+        item.value.Content = parseHeadings(data.data.content);
     }).catch(function (error) {
         console.error('Errore nel recupero dei posts.', error);
     })

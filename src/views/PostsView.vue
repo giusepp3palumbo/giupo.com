@@ -12,7 +12,23 @@
     </div>
 
     <!-- Mostra la lista di articoli -->
-    <ArticleList :items="items" viewType="preview" @categorySelected="filterByCategory" />
+    <div class="article-container">
+        <ArticleList :items="items" viewType="preview" @categorySelected="filterByCategory" />
+        <aside v-if="categories.length">
+            <h1>Filter by:</h1>
+            <ul>
+                <li v-for="(category, index) in categories" :key="index">
+                    <div class="category-icon" @click="selectCategory(category.name)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                            <circle cx="12" cy="12" r="10" :fill="getCategoryColor(category.name)" />
+                        </svg>
+                        <span class="tag">{{ category.name }}</span>
+                    </div>
+                </li>
+            </ul>
+        </aside>
+    </div>
+
     <!-- Mostra la paginazione -->
     <div class="pagination">
         <svg :class="{ disabled: currentPage === 1 }" @click="fetchItems(currentPage - 1)"
@@ -38,6 +54,7 @@ import { onMounted, ref, computed } from 'vue';
 import { useUserStore } from '@/stores/userStore'; // Importa lo store
 
 const items = ref([]);
+const categories = ref([])
 const userStore = useUserStore();
 const selectedCategory = ref(null);
 const currentPage = ref(1);
@@ -91,9 +108,35 @@ const fetchItems = async (page = 1) => {
     })
 }
 
+const fetchCategories = async () => {
+    let origin = window.location.origin;
+    let url = origin + '/items/category&fields=*';
+
+    const response = await fetch(url,
+        {
+            headers: new Headers({
+
+            })
+        }
+    ).then((response) => {
+        return response.json();
+    }).then((data) => {
+        console.log("fetchCategories data")
+        console.log(data)
+        categories.value = data.data;
+    }).catch(function (error) {
+        console.error('Errore nel recupero dei posts.', error);
+    })
+}
+
+const selectCategory = async (categoryName) => {
+    selectedCategory.value = categoryName;
+    await fetchItems();
+};
 
 // Carica i prodotti quando il componente è montato
 onMounted(() => {
+    fetchCategories();
     fetchItems();
 });
 </script>
@@ -134,5 +177,34 @@ p {
     background-color: gray;
     cursor: not-allowed;
     pointer-events: none;
+}
+
+.article-container {
+    display: flex;
+    gap: 50px;
+}
+
+article {
+    flex: 80%;
+}
+
+aside {
+    flex: 20%;
+    position: sticky;
+    top: 20px;
+    align-self: start;
+}
+
+
+
+@media (max-width: 800px) {
+    .article-container {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    aside {
+        position: relative;
+    }
 }
 </style>
