@@ -108,6 +108,16 @@ const fetchItems = async (page = 1) => {
     })
 }
 
+const categoryColors = {
+    "tech": "#630000",
+    "photo": "#006e5d",
+};
+
+// Funzione per ottenere il colore
+const getCategoryColor = (name) => {
+    return categoryColors[name] || "#ccc"; // Default grigio se non è definito
+};
+
 const fetchCategories = async () => {
     let origin = window.location.origin;
     let url = origin + '/items/category?fields=*';
