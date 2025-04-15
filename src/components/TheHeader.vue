@@ -24,7 +24,7 @@
                             <RouterLink to="/tech-stack">Tech Stack</RouterLink>
                         </li>
                         <li>
-                            <RouterLink to="/page/work-experience">Curriculum</RouterLink>
+                            <RouterLink to="/page/portfolio">Portfolio</RouterLink>
                         </li>
                         <li>
                             <RouterLink to="/page/about-me">About Me</RouterLink>
