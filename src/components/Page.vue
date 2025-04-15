@@ -107,8 +107,6 @@ aside {
     align-self: start;
 }
 
-
-
 @media (max-width: 800px) {
     .article-container {
         display: flex;
@@ -118,5 +116,33 @@ aside {
     aside {
         position: relative;
     }
+}
+
+h1 {
+    margin: 0;
+    font-size: 2rem;
+    /* Aumenta la dimensione */
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    word-spacing: 0.2em;
+    color: var(--secondary-color);
+    margin: 20px 0;
+    border-bottom: 2px solid var(--primary-color);
+    /* Più spesso e con colore principale */
+    text-align: center;
+    padding-bottom: 5px;
+    /* Per distanziarlo meglio */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    /* Leggero effetto 3D */
+}
+
+h2 {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    word-spacing: 0.2em;
+    color: var(--primary-color);
+    padding-bottom: 2px;
+    border-bottom: 1px solid;
 }
 </style>
