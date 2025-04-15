@@ -136,7 +136,7 @@ h1 {
     /* Leggero effetto 3D */
 }
 
-h2 {
+article h2 {
     text-transform: uppercase;
     letter-spacing: 0.2em;
     word-spacing: 0.2em;
