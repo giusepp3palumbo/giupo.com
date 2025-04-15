@@ -126,7 +126,6 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 0.2em;
     word-spacing: 0.2em;
-    color: var(--secondary-color);
     margin: 20px 0;
     border-bottom: 2px solid var(--primary-color);
     /* Più spesso e con colore principale */
@@ -141,7 +140,7 @@ h2 {
     text-transform: uppercase;
     letter-spacing: 0.2em;
     word-spacing: 0.2em;
-    color: var(--primary-color);
+    color: var(--secondary-color);
     padding-bottom: 2px;
     border-bottom: 1px solid;
 }
