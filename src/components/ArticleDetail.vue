@@ -101,9 +101,12 @@ aside {
 aside ul {
     margin: 0;
     padding: 20px 0;
-    list-style-type: none;
+    list-style-type: "\1F7C5";
 }
 
+aside li {
+    padding-left: 5px;
+}
 
 @media (max-width: 800px) {
     .article-container {
