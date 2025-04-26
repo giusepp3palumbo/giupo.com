@@ -119,13 +119,19 @@ aside {
 
 aside ul {
     margin: 0;
-    padding: 20px 0;
+    padding: 0;
     list-style-type: "\1F7C5";
 }
 
 aside li {
     padding-left: 5px;
 }
+
+article pre {
+    overflow-x: auto;
+    white-space: pre;
+}
+
 
 @media (max-width: 800px) {
     .article-container {

@@ -62,7 +62,7 @@ const selectCategory = (categoryName) => {
     display: flex;
     align-items: center;
     /* Allinea meglio il contenuto */
-    margin-top: 40px;
+    margin-bottom: 40px;
     padding: 15px;
     /* Aggiunge un po’ di respiro dentro il box */
     border-radius: 8px;
