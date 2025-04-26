@@ -98,6 +98,11 @@ aside {
     align-self: start;
 }
 
+aside ul {
+    margin: 0;
+    padding: 20px 0;
+    list-style-type: none;
+}
 
 
 @media (max-width: 800px) {
