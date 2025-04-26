@@ -51,9 +51,16 @@ const fetchItem = async () => {
     })
 
     console.log(item.value)
+
+    // Aspetta che Vue aggiorni il DOM
     await nextTick()
-    // Dopo che il DOM è stato aggiornato, evidenzia il codice
-    Prism.highlightAll()
+
+    // Poi fai l'highlight
+    if (window.Prism) {
+        Prism.highlightAll()
+    } else {
+        console.error('Prism non è caricato!')
+    }
 }
 
 function parseHeadings(htmlString) {
