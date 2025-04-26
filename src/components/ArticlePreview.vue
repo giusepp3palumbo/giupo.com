@@ -62,7 +62,7 @@ const selectCategory = (categoryName) => {
     display: flex;
     align-items: center;
     /* Allinea meglio il contenuto */
-    margin-bottom: 40px;
+    margin-top: 40px;
     padding: 15px;
     /* Aggiunge un po’ di respiro dentro il box */
     border-radius: 8px;
@@ -178,7 +178,8 @@ h1 {
     .article-preview {
         height: fit-content;
         display: flex;
-        margin-top: 40px;
+        margin-top: 0;
+        margin-bottom: 40px;
         flex-direction: column;
         gap: 0;
         box-shadow: 5px 5px 5px var(--primary-color-darker);
