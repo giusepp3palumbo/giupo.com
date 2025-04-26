@@ -10,7 +10,7 @@
             <div class="meta-info">
                 <div>
                     <span class="author">By {{ item.author.name }}</span>
-                    <span class="date">{{ formatDate(item.created_at) }}</span>
+                    <span class="date">{{ formatDate(item.date_created) }}</span>
                 </div>
                 <div class="category-container">
                     <div class="category-icon" @click="selectCategory(item.category.name)">
