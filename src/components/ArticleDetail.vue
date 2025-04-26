@@ -30,6 +30,12 @@ const parsedContent = ref('') // HTML modificato con gli id nei <h2>
 
 const userStore = useUserStore();
 
+function decodeHtml(html) {
+    const txt = document.createElement('textarea');
+    txt.innerHTML = html;
+    return txt.value;
+}
+
 const fetchItem = async () => {
     let origin = window.location.origin;
     let url = origin + '/items/post/' + props.postId
@@ -45,7 +51,7 @@ const fetchItem = async () => {
         console.log("data")
         console.log(data)
         item.value = data.data;
-        item.value.Content = parseHeadings(data.data.content);
+        item.value.content = decodeHtml(parseHeadings(data.data.content));
     }).catch(function (error) {
         console.error('Errore nel recupero dei posts.', error);
     })
