@@ -31,9 +31,12 @@ const parsedContent = ref('') // HTML modificato con gli id nei <h2>
 const userStore = useUserStore();
 
 function decodeHtml(html) {
-    const txt = document.createElement('textarea');
-    txt.innerHTML = html;
-    return txt.value;
+    const txt = document.createElement('textarea')
+    txt.innerHTML = html
+    let decoded = txt.value
+    // Dopo aver decodificato, sostituisco i <br> con \n
+    decoded = decoded.replace(/<br\s*\/?>/gi, '\n')
+    return decoded
 }
 
 const fetchItem = async () => {
