@@ -142,5 +142,11 @@ article pre {
     aside {
         position: relative;
     }
+
+
+    aside ul {
+        display: block;
+    }
+
 }
 </style>
