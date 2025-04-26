@@ -17,7 +17,7 @@
 
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, nextTick } from 'vue';
 import { useUserStore } from '@/stores/userStore'; // Importa lo store
 
 const props = defineProps(['postId'])
@@ -51,6 +51,9 @@ const fetchItem = async () => {
     })
 
     console.log(item.value)
+    await nextTick()
+    // Dopo che il DOM è stato aggiornato, evidenzia il codice
+    Prism.highlightAll()
 }
 
 function parseHeadings(htmlString) {
